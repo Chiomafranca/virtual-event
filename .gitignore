@@ -1,1 +1,4 @@
-JWT_SECRET=chioma
+/node_modules
+/dist
+/bin
+.env
