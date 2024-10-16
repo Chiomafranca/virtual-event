@@ -1,4 +1,2 @@
 /node_modules
-/dist
-/bin
-.env
+node_modules
