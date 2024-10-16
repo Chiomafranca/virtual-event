@@ -1,21 +1,24 @@
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE,
+var transport = nodemailer.createTransport({
+  host: "sandbox.smtp.mailtrap.io",
+  port: 2525,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: "8ec9102e4827a0",
+    pass: "67ed753b8d36a5",
   },
 });
 
-const sendEmail = (to, subject, text) => {
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to,
-    subject,
-    text,
-  };
-  return transporter.sendMail(mailOptions);
+const sendEmail = async (userEmail, code = "") => {
+  return await transport.sendMail({
+    from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>',
+    to: userEmail,
+    subject: "Welcome to FC Event app",
+    html: `<h1>Hello ${
+      userEmail.split("@")[0]
+    }. Welcome to our Super app. Your code is : ${code} </h1>`,
+  });
 };
+
 module.exports = { sendEmail };
