@@ -9,5 +9,4 @@ const userSchema = new mongoose.Schema({
   twoFactorCode: { type: String },
   twoFactorExpiration: { type: Date },
 });
-
 module.exports = mongoose.model("User", userSchema);
